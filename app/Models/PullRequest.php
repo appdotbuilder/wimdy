@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\MorphMany;
 
 /**
  * App\Models\PullRequest
@@ -108,5 +109,21 @@ class PullRequest extends Model
     public function mergedBy(): BelongsTo
     {
         return $this->belongsTo(User::class, 'merged_by');
+    }
+
+    /**
+     * Get the pull request comments.
+     */
+    public function comments(): MorphMany
+    {
+        return $this->morphMany(Comment::class, 'commentable');
+    }
+
+    /**
+     * Get the commits for this pull request.
+     */
+    public function commits()
+    {
+        return $this->belongsToMany(Commit::class, 'pull_request_commits');
     }
 }

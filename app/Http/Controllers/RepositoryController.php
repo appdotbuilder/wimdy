@@ -58,6 +58,17 @@ class RepositoryController extends Controller
             $query->with('author')->latest('committed_at')->take(10);
         }]);
 
+        // Load additional stats for insights
+        $repository->loadCount(['issues', 'pullRequests']);
+        $repository->loadCount([
+            'issues as open_issues_count' => function ($query) {
+                $query->where('status', 'open');
+            },
+            'pullRequests as open_pull_requests_count' => function ($query) {
+                $query->where('status', 'open');
+            }
+        ]);
+
         return Inertia::render('repositories/show', [
             'repository' => $repository
         ]);

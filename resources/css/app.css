@@ -153,13 +153,25 @@
         @apply border-border;
     }
 
-    /* Force dark mode for Wimdy */
+    /* Force dark mode for Wimdy - Enhanced Dark Theme */
     html {
         color-scheme: dark;
     }
 
     body {
-        @apply bg-gray-900 text-white;
+        @apply bg-gray-900 text-white antialiased;
+        font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    
+    /* Enhanced Typography */
+    h1, h2, h3, h4, h5, h6 {
+        @apply text-white font-semibold;
+        letter-spacing: -0.025em;
+    }
+    
+    p, span, div {
+        @apply text-gray-300;
+        line-height: 1.6;
     }
     
     /* Ensure all backgrounds are dark */
@@ -167,13 +179,123 @@
         @apply bg-gray-900;
     }
     
-    /* Additional dark mode enforcements */
+    /* Enhanced Form Elements */
     input, textarea, select {
-        @apply bg-gray-800 text-white border-gray-700;
+        @apply bg-gray-800 text-white border-gray-600 rounded-lg;
+        @apply focus:border-purple-500 focus:ring-2 focus:ring-purple-500/20;
+        @apply transition-all duration-200;
+    }
+    
+    input::placeholder, textarea::placeholder {
+        @apply text-gray-500;
+    }
+    
+    /* Enhanced Button States */
+    button {
+        @apply transition-all duration-200;
     }
     
     /* Hover states for gray backgrounds */
     .hover\:bg-gray-750:hover {
-        background-color: rgb(55 65 81); /* between gray-700 and gray-800 */
+        background-color: rgb(55 65 81 / 0.8);
+    }
+    
+    /* Enhanced Border and Shadow System */
+    .border-gray-700 {
+        border-color: rgb(55 65 81 / 0.8);
+    }
+    
+    .border-gray-600 {
+        border-color: rgb(75 85 99 / 0.9);
+    }
+    
+    /* Custom scrollbars for dark theme */
+    ::-webkit-scrollbar {
+        width: 8px;
+        height: 8px;
+    }
+    
+    ::-webkit-scrollbar-track {
+        @apply bg-gray-900;
+    }
+    
+    ::-webkit-scrollbar-thumb {
+        @apply bg-gray-700 rounded-full;
+    }
+    
+    ::-webkit-scrollbar-thumb:hover {
+        @apply bg-gray-600;
+    }
+    
+    /* Enhanced Cards and Panels */
+    .card-dark {
+        @apply bg-gray-800 border border-gray-700 rounded-lg;
+        box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.3), 0 2px 4px -1px rgb(0 0 0 / 0.2);
+    }
+    
+    .card-dark:hover {
+        border-color: rgb(139 92 246 / 0.5);
+        box-shadow: 0 10px 15px -3px rgb(139 92 246 / 0.1), 0 4px 6px -2px rgb(139 92 246 / 0.05);
+    }
+    
+    /* Code and Monospace Text */
+    code, pre, .font-mono {
+        @apply bg-gray-900 text-gray-300 px-2 py-1 rounded text-sm;
+        font-family: 'JetBrains Mono', 'Fira Code', 'Monaco', 'Consolas', monospace;
+    }
+    
+    /* Enhanced Link States */
+    a {
+        @apply transition-colors duration-200;
+    }
+    
+    /* Selection styles */
+    ::selection {
+        @apply bg-purple-600 text-white;
+    }
+    
+    /* Focus outlines */
+    .focus-outline {
+        @apply focus:outline-none focus:ring-2 focus:ring-purple-500/50 focus:border-purple-500;
+    }
+    
+    /* Enhanced spacing utilities */
+    .space-y-8 > * + * {
+        margin-top: 2rem;
+    }
+    
+    /* Text shadow for better readability */
+    .text-shadow {
+        text-shadow: 0 1px 2px rgb(0 0 0 / 0.5);
+    }
+    
+    /* Gradient overlays for hero sections */
+    .gradient-overlay {
+        background: linear-gradient(135deg, rgb(139 92 246 / 0.1) 0%, rgb(219 39 119 / 0.1) 100%);
+    }
+    
+    /* Enhanced animation utilities */
+    .animate-fade-in {
+        animation: fadeIn 0.5s ease-in-out;
+    }
+    
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(10px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+    
+    /* Responsive typography */
+    @media (max-width: 640px) {
+        body {
+            font-size: 14px;
+        }
+        
+        h1 {
+            font-size: 1.75rem;
+        }
+        
+        h2 {
+            font-size: 1.5rem;
+        }
     }
 }

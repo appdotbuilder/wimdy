@@ -23,6 +23,10 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  * @property string $default_branch
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read int $issues_count
+ * @property-read int $pull_requests_count
+ * @property-read int $open_issues_count
+ * @property-read int $open_pull_requests_count
  * @property-read \App\Models\User $owner
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Issue> $issues
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\PullRequest> $pullRequests
